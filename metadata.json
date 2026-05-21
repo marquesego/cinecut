@@ -1,0 +1,6 @@
+{
+  "name": "CineCut Pro",
+  "description": "Professional video editor for redactors with Adobe Premiere XML export functionality.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
