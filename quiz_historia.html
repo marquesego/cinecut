@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Historia 1º ESO</title>
+<style>
+body { font-family: Arial; text-align:center; }
+.box { margin:20px auto; width:60%; }
+button { margin:5px; padding:10px; }
+</style>
+</head>
+<body>
+<h1>Quiz Historia España</h1>
+<div class="box">
+<p id="question"></p>
+<div id="answers"></div>
+<p id="score"></p>
+</div>
+<script>
+const quiz = [
+{q:'Pregunta 1: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 2: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 3: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 4: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 5: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 6: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 7: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 8: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 9: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 10: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 11: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 12: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 13: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 14: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 15: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 16: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 17: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 18: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 19: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 20: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 21: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 22: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 23: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 24: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 25: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 26: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 27: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 28: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 29: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 30: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 31: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 32: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 33: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 34: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 35: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 36: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 37: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 38: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 39: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 40: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 41: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 42: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 43: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 44: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 45: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 46: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 47: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 48: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 49: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 50: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 51: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 52: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 53: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 54: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 55: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 56: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 57: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 58: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 59: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 60: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 61: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 62: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 63: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 64: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 65: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 66: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 67: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 68: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 69: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 70: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 71: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 72: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 73: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 74: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 75: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 76: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 77: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 78: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 79: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 80: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 81: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 82: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 83: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 84: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 85: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 86: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 87: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 88: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 89: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 90: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 91: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 92: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 93: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 94: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 95: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 96: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 97: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 98: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 99: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+{q:'Pregunta 100: ¿Los romanos llegaron a Hispania en las guerras púnicas?',a:['Sí','No'],c:0},
+];
+
+let index = 0;
+let score = 0;
+
+function loadQuestion(){
+    if(index >= quiz.length){
+        document.getElementById('question').innerText = "Fin del quiz";
+        document.getElementById('answers').innerHTML = "";
+        document.getElementById('score').innerText = "Puntuación: " + score + "/" + quiz.length;
+        return;
+    }
+
+    const q = quiz[index];
+    document.getElementById('question').innerText = q.q;
+
+    let html = "";
+    q.a.forEach((ans,i)=>{
+        html += `<button onclick="check(${i})">${ans}</button>`;
+    });
+    document.getElementById('answers').innerHTML = html;
+}
+
+function check(i){
+    if(i === quiz[index].c){ score++; }
+    index++;
+    loadQuestion();
+}
+
+loadQuestion();
+</script>
+</body>
+</html>
